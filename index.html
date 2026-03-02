@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal d'Aplicacions - ILERNA DAW1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ilerna: {
+              blau: '#4fbccd',
+              negre: '#060606',
+              fons: '#ffffff'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-sans bg-ilerna-negre m-0 min-h-screen text-gray-800">
+
+  <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <div class="bg-ilerna-negre text-ilerna-blau p-2 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+      </div>
+    </div>
+    <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+      Portal de l'Alumne
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6 sm:p-10">
+    <div class="mb-10 text-center sm:text-left">
+      <h2 class="text-3xl font-bold text-white mb-2">Benvingut al portal</h2>
+      <p class="text-gray-400">Selecciona l'aplicació a la qual vols accedir.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+      <a href="Gestió-Incidencies/index.html" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
+        
+        <div class="absolute -right-10 -top-10 bg-ilerna-blau/10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 group-hover:bg-ilerna-blau/20 group-hover:scale-150"></div>
+
+        <div class="flex items-center gap-4 mb-4 relative z-10">
+          <div class="bg-blue-50 text-ilerna-blau p-3 rounded-xl group-hover:bg-ilerna-blau group-hover:text-white transition-colors duration-300">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-ilerna-negre">Gestor d'Incidències</h3>
+        </div>
+        <p class="text-gray-600 text-sm mb-6 relative z-10">
+          Notifica qualsevol problema amb els equips, l'aula o el Campus Virtual per a una ràpida resolució.
+        </p>
+        <div class="flex items-center text-ilerna-blau font-bold text-sm group-hover:translate-x-1 transition-transform duration-300 relative z-10">
+          Obrir aplicació
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </a>
+
+      <!-- <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
+        <div class="absolute top-4 right-4 bg-gray-300 text-gray-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
+          Pròximament
+        </div>
+        <div class="flex items-center gap-4 mb-4 grayscale">
+          <div class="bg-gray-200 text-gray-500 p-3 rounded-xl">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-500">Reserva d'Equips</h3>
+        </div>
+        <p class="text-gray-500 text-sm mb-6">
+          Text base.
+        </p>
+        <div class="flex items-center text-gray-400 font-bold text-sm">
+          En desenvolupament...
+        </div>
+      </div>
+
+      <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
+        <div class="absolute top-4 right-4 bg-gray-300 text-gray-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
+          Pròximament
+        </div>
+        <div class="flex items-center gap-4 mb-4 grayscale">
+          <div class="bg-gray-200 text-gray-500 p-3 rounded-xl">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-500">Gestió de Tutories</h3>
+        </div>
+        <p class="text-gray-500 text-sm mb-6">
+          Text base.
+        </p>
+        <div class="flex items-center text-gray-400 font-bold text-sm">
+          En desenvolupament...
+        </div>
+      </div> -->
+
+    </div>
+  </main>
+
+</body>
+</html>
