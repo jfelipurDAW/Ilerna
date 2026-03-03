@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../icon128.png">
+  <title>Plànol de l'Aula - ILERNA DAW1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ilerna: {
+              blau: '#4fbccd',
+              negre: '#060606',
+              fons: '#ffffff'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- custom card styling: remove black borders, add shadow and hover elevation -->
+  <style>
+    /* variables and general card styling */
+    .cards {
+      --label-text-name: #464646;
+      --label-bg-name: #d1d1d1;
+      --label-text-id: #db8300;
+      --label-bg-id: #faecc4;
+      grid-auto-rows: 5rem; /* uniform row height across all .cards grids */
+    }
+
+    /* apply only to immediate children of elements with class 'cards' that actually contain content */
+    .cards > div:not(:empty) {
+      border: 1px solid #e5e7eb !important;
+      background-color: #ffffff !important;
+      border-radius: 10px !important;
+      box-shadow: 0 9px 6px -1px rgba(0,0,0,0.1);
+      transition: transform 0.15s, box-shadow 0.15s;
+      min-width: 6rem;
+      height: 100%; /* use the grid row height */
+      padding: 0.5rem 0.5rem;
+      overflow: hidden; /* prevent content from expanding the row */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .cards > div:not(:empty):hover {
+      transform: translateY(-4px) scale(1.8);
+      box-shadow: 0 8px 10px -2px rgba(0,0,0,0.15);
+    }
+
+    /* limit professor card hover scale */
+    #prof-container:hover {
+      transform: translateY(-4px) scale(1.2) !important;
+      box-shadow: 0 8px 10px -2px rgba(0,0,0,0.15);
+    }
+
+    /* name label */
+    .cards > div:not(:empty) > div:nth-child(1) {
+      color: var(--label-text-name);
+      background-color: var(--label-bg-name);
+      border-radius: 0.375rem;
+      padding: 0.3rem 0.25rem;
+      border: none !important;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .cards > div:not(:empty) > div:nth-child(1):empty {
+      background-color: transparent;
+      color: transparent;
+    }
+
+    /* id label */
+    .cards > div:not(:empty) > div:nth-child(2) {
+      color: var(--label-text-id);
+      background-color: var(--label-bg-id);
+      border-radius: 0.375rem;
+      padding: 0.125rem 0.25rem;
+      border: none !important;
+      text-align: center;
+      margin-top: 0rem;
+    }
+  </style>
+</head>
+<body class="font-sans bg-ilerna-negre m-0 min-h-screen text-gray-800">
+
+  <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+        </svg>
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+      </div>
+    </div>
+    <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+      Portal de l'Alumne
+    </div>
+  </header>
+
+  <main class="max-w-none w-full mx-auto p-6 sm:p-10">
+    
+    <div class="mb-8 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
+      <div>
+        <h2 class="text-3xl font-bold text-white mb-2">Plànol de l'Aula 3.3</h2>
+        <p class="text-gray-400">Distribució d'alumnes i identificadors d'equip.</p>
+      </div>
+      <a href="../" class="inline-flex items-center gap-2 bg-ilerna-fons text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:bg-gray-50 hover:-translate-y-1 transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Tornar al portal
+      </a>
+    </div>
+
+        <div class="bg-gray-100 rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau px-12 py-8 sm:px-16 w-full max-w-full mx-auto" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      
+      <div class="min-w-[1000px] flex justify-center items-start gap-12 mx-auto p-4 box-border">
+        
+        <div class="grid grid-cols-5 gap-3 w-[55%] cards">
+          
+          <div></div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Cesc Bellet</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Ivan Korobov</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Pere Boloix</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Hugo Lara</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-005</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Martí Badia</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-006</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Daniel Guedes</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-007</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Biel Sànchez</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-008</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Andrei Istoc</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-009</div>
+          </div>
+
+          <div></div> <div></div> <div></div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Darius Catalin</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Eloy Gonzalo</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div></div> <div></div> <div></div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Unai Torres</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Badre Essadaoui</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-020</div>
+          </div>
+
+          <div></div> <div></div> <div></div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Marta Voytkovych</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-035</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Jan Felip</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-024</div>
+          </div>
+
+          <div></div> <div></div> <div></div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-32-PC-013</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-32-PC-032</div>
+          </div>
+
+        </div>
+
+        <div class="grid grid-cols-4 gap-3 w-[45%] cards">
+          
+          <div id="prof-container" class="col-start-3 col-span-2 m-0 bg-gray-200 rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-lg hover:shadow-xl transition-transform">
+            <div id="professor-card" class="w-full h-full flex flex-col justify-center border-[3px] border-gray-500 bg-white text-gray-900 text-sm font-bold text-center py-3 px-1 leading-none rounded">
+              <div id="current-class-name" class="text-base font-bold truncate">No hi ha classe ara</div>
+            </div>
+          </div>
+
+          
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Jan Boloix</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Soulou Seydi</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Pau Nadal</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Denis Tineo</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Marcelo Renteria</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Carlos Oros</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate"> </div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Alejandro Monreal</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Alex Camacho</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Guillem Fernandez</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate"> </div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Gerard Lechosa</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Iván Calavera</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Oriol Aran</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate"> </div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate"> </div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Aritz Perez</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Marius Cristian</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+          <div class="bg-white border-[3px] border-black rounded flex flex-col items-center justify-center p-2 gap-1.5 shadow-sm">
+            <div class="w-full border-[3px] border-gray-400 text-gray-800 text-[11px] font-extrabold text-center py-1 px-1 leading-none truncate">Didac Santolaria</div>
+            <div class="w-4/5 border-[3px] border-yellow-400 text-gray-800 text-[10px] font-mono font-bold text-center py-1 px-1 leading-none truncate">A-33-PC-000</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+</main>
+
+  <div id="horari-actual" style="display:block;"></div>
+  <script src="script.js"></script>
+</body>
+</html>

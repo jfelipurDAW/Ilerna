@@ -3,13 +3,62 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../icon128.png">
     <title>Portal d'Incidències ILERNA</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+        iframe { width: 100%; flex: 1; border: none; }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                ilerna: {
+                blau: '#4fbccd',
+                negre: '#060606',
+                fons: '#ffffff'
+                }
+            }
+            }
+        }
+        }
+    </script>
     </head>
-    <body>
-    <iframe src="https://script.google.com/a/macros/alumnes.ilerna.com/s/AKfycbzY7rpKJKlMPbPZyXGdM5z-ctjqwCn0mMTCO5mQWL6l6heIuKz1r9pbV3OqUPlImUQm0g/exec"></iframe>
+    <body class="relative">
+        <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+            <div class="flex items-center gap-3">
+            <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                </svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+            </div>
+            </div>
+            <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+            Portal de l'Alumne
+            </div>
+        </header>
+        <a href="../" class="absolute top-24 right-6 z-30 inline-flex items-center gap-2 bg-ilerna-fons text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:-translate-y-1 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Tornar al portal
+        </a>
+        <div class="relative flex-1">
+            <div id="loading-message" class="absolute inset-0 z-20 flex items-center justify-center bg-ilerna-negre">
+                <p class="text-lg font-semibold text-ilerna-fons">Connectant amb la base de dades...</p>
+            </div>
+            <iframe id="incidents-iframe" class="h-full w-full" src="https://script.google.com/a/macros/alumnes.ilerna.com/s/AKfycbzY7rpKJKlMPbPZyXGdM5z-ctjqwCn0mMTCO5mQWL6l6heIuKz1r9pbV3OqUPlImUQm0g/exec"></iframe>
+        </div>
+        <script>
+            document.getElementById('incidents-iframe').addEventListener('load', function() {
+                document.getElementById('loading-message').style.display = 'none';
+            });
+        </script>
     </body>
 </html>
