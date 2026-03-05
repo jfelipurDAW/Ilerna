@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700;900&display=swap" rel="stylesheet">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            ilerna: {
+                                blau: '#4fbccd',
+                                negre: '#060606',
+                                fons: '#ffffff'
+                            }
+                        },
+                        fontFamily: {
+                            fira: ['"Fira Sans"', 'sans-serif']
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            /* La franja negra infinita */
+            .full-width-black-strip::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 300vw;
+                transform: translateX(-50%);
+                background-color: #060606;
+                z-index: -1;
+            }
+
+            /* Animació per a les franges de scroll */
+            .scroll-animate {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            .scroll-animate.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        </style>
+    </head>
+    <body class="bg-ilerna-fons font-fira text-ilerna-negre overflow-x-hidden">
+
+        <!-- === HEADER NAVEGACIÓ (Inicialment amagat) === -->
+        <header id="sticky-header" class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center fixed top-0 w-full z-50 transition-transform duration-300 -translate-y-full">
+            <div class="flex items-center gap-3">
+                <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+                </div>
+            </div>
+            <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                Portal de l'Alumne
+            </div>
+        </header>
+
+        <!-- === SECCIÓ DEL BANNER === -->
+        <div id="banner-section" class="relative flex items-center justify-center h-screen overflow-hidden transition-all duration-700 ease-in-out">
+            <div class="main-container w-full max-w-[1600px] relative flex flex-col items-start transform-gpu -rotate-6 md:-rotate-10 scale-75 sm:scale-90 md:scale-100 lg:scale-110 xl:scale-130 transition-transform duration-300" style="transform-origin: center center;">
+            
+            <h1 class="text-ilerna-blau text-[5rem] sm:text-[8rem] md:text-[11rem] font-black uppercase leading-none ml-[10%]">
+                El teu
+            </h1>
+
+            <div class="full-width-black-strip py-4 sm:py-10 md:py-14 my-4 relative w-full flex items-center">
+                <h1 class="text-white text-[7rem] sm:text-[12rem] md:text-[18rem] font-black uppercase leading-[0.7] ml-[15%]">
+                    Vot
+                </h1>
+            </div>
+
+            <h1 class="text-ilerna-blau text-[5rem] sm:text-[8rem] md:text-[11rem] font-black uppercase leading-[0.7] ml-[25%]">
+                Defineix
+            </h1>
+            
+            <h1 class="text-ilerna-blau text-[4rem] sm:text-[7rem] md:text-[9rem] font-black uppercase leading-none ml-[30%] sm:ml-[40%] md:ml-[45%]">
+                El demà
+            </h1>
+
+            <div class="hidden md:block absolute bottom-4 sm:bottom-0 md:bottom-[-2rem] right-[5%] text-right z-10">
+                <h2 class="text-ilerna-negre text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-tighter">Jan Felip</h2>
+                <p class="text-ilerna-blau text-base sm:text-lg md:text-2xl font-bold -mt-1 md:-mt-2">DAW-1</p>
+            </div>
+
+            </div>
+        </div>
+
+        <!-- === SECCIÓ DE CONTINGUT === -->
+        <main id="main-content" class="px-6 py-16 sm:px-10 sm:py-24 bg-white transition-all duration-300 ease-in-out">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-ilerna-negre mb-4 border-b-4 border-ilerna-blau pb-2">La meva proposta</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Crec en un futur on la veu de cada estudiant compta. El meu programa se centra en tres pilars fonamentals: automatització, innovació i comoditat. Vull assegurar que les decisions que afecten el nostre dia a dia a l'aula es prenguin de forma comuna i garanteixin un entorn d'estudi millor.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Proposo la implementació de noves eines digitals per millorar la comunicació entre alumnes i professors per la resol·lució d'incidències a l'aula, un espai on consultar informació de l'aula i un sistema de tramitació de documents i vagues més eficient.
+                </p>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-ilerna-blau">
+                        <h3 class="text-xl font-bold mb-2">Innovació Tecnològica</h3>
+                        <p class="text-gray-600">Aprofitant que ens dediquem a la programació web, he creat aquest espai per millorar la comoditat de certs processos que fins ara es feien manualment.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-ilerna-blau">
+                        <h3 class="text-xl font-bold mb-2">Desenvolupament</h3>
+                        <p class="text-gray-600">Aquest espai no és definitiu, i pot estar subjecte a noves implementacions i mecàniques. Dependrà de vosaltres proposar idees d'aplicacions per afegir.</p>
+                    </div>
+                </div>
+
+                <p class="mt-12 text-lg text-gray-700 leading-relaxed">
+                    El teu vot és l'eina més poderosa per construir el demà que volem. Un demà més transparent, més connectat i més preparat per als reptes que enfrontem. Uneix-te al canvi.
+                </p>
+            </div>
+        </main>
+
+        <!-- === SECCIÓ DE FRANJES DE SCROLL === -->
+        <section class="bg-white py-24 space-y-12 overflow-x-hidden">
+            <div class="scroll-animate h-72 bg-gray-100 w-full"></div>
+            <div class="scroll-animate h-72 bg-gray-200 w-full" style="transition-delay: 150ms;"></div>
+            <div class="scroll-animate h-72 bg-gray-100 w-full" style="transition-delay: 300ms;"></div>
+        </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const animatedElements = document.querySelectorAll('.scroll-animate');
+
+                if (window.IntersectionObserver) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    animatedElements.forEach(el => observer.observe(el));
+                } else {
+                    // Fallback per a navegadors antics: mostra els elements directament
+                    animatedElements.forEach(el => el.classList.add('is-visible'));
+                }
+
+                // Lògica per mostrar/amagar el header sticky
+                const stickyHeader = document.getElementById('sticky-header');
+                const bannerSection = document.getElementById('banner-section');
+                const mainContent = document.getElementById('main-content');
+                let headerIsVisible = false;
+
+                window.addEventListener('scroll', () => {
+                    // Quan l'usuari baixa més de 50px, amaguem el banner i mostrem el header.
+                    if (window.scrollY > 50) {
+                        // Només executem això la primera vegada que el header es fa visible per evitar càlculs innecessaris.
+                        if (!headerIsVisible) {
+                            // Obtenim el padding-top actual (que ve de les classes de Tailwind)
+                            const currentPaddingTop = parseInt(window.getComputedStyle(mainContent).paddingTop, 10);
+                            // Calculem el nou padding: alçada del header + el padding que ja tenia.
+                            const newPadding = stickyHeader.offsetHeight + currentPaddingTop;
+                            mainContent.style.paddingTop = `${newPadding}px`;
+                            headerIsVisible = true;
+                        }
+                        stickyHeader.classList.remove('-translate-y-full');
+                        bannerSection.classList.remove('h-screen');
+                        bannerSection.classList.add('h-0', 'opacity-0');
+                    }
+                    // Per evitar el parpelleig, només tornem a mostrar el banner si l'usuari torna a dalt de tot (scroll = 0).
+                    else if (window.scrollY === 0) {
+                        // Només executem si el header estava visible prèviament.
+                        if (headerIsVisible) {
+                            // En treure l'estil inline, es torna a aplicar el padding de les classes de Tailwind.
+                            mainContent.style.paddingTop = '';
+                            headerIsVisible = false;
+                        }
+                        stickyHeader.classList.add('-translate-y-full');
+                        bannerSection.classList.add('h-screen');
+                        bannerSection.classList.remove('h-0', 'opacity-0');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
