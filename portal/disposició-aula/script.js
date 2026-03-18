@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 1, start: "20:25", end: "21:20", name: "Entorns de desenvolupament", teacher: "Guillem Mauri" },
         
         { day: 2, start: "15:20", end: "16:15", name: "Itinerari personal", teacher: "Teresa Desmay" },
-        { day: 2, start: "16:15", end: "18:05", name: "Base de dades", teacher: "Rosa Suris" },
+        { day: 2, start: "16:15", end: "18:05", name: "Base de dades", teacher: "Rosa Surís" },
         { day: 2, start: "18:05", end: "18:30", name: "Esbarjo", teacher: ""},
         { day: 2, start: "18:30", end: "19:25", name: "Sistemes Informàtics", teacher: "Manuel Martínez" },
 
@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { day: 4, start: "19:30", end: "20:25", name: "Digitalització", teacher: "Irene Calderon" },
 
         { day: 5, start: "15:20", end: "17:10", name: "Programació", teacher: "Flor Martínez" },
-        { day: 5, start: "17:10", end: "18:05", name: "Base de dades", teacher: "Sandra Serrano" },
+        { day: 5, start: "17:10", end: "18:05", name: "Base de dades", teacher: "Rosa Surís" },
         { day: 5, start: "18:05", end: "18:30", name: "Esbarjo", teacher: ""},
         { day: 5, start: "18:30", end: "19:30", name: "Entorns de desenvolupament", teacher: "Guillem Mauri" },
-        { day: 5, start: "19:30", end: "20:25", name: "Base de dades", teacher: "Sandra Serrano" }
+        { day: 5, start: "19:30", end: "20:25", name: "Base de dades", teacher: "Rosa Surís" }
     ];
 
     const dayNames = ["Diumenge", "Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte"];

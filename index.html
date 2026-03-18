@@ -1,167 +1,274 @@
 <!DOCTYPE html>
 <html lang="ca">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="./icon128.png">
-  <title>Portal DAW1</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ilerna: {
-              blau: '#4fbccd',
-              negre: '#060606',
-              fons: '#ffffff'
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="icon" type="image/png" href="./icon128.png">
+        <title>Jan Felip</title>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700;900&display=swap" rel="stylesheet">
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            ilerna: {
+                                blau: '#4fbccd',
+                                negre: '#060606',
+                                fons: '#ffffff'
+                            }
+                        },
+                        fontFamily: {
+                            fira: ['"Fira Sans"', 'sans-serif']
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    }
-  </script>
-</head>
-<body class="font-sans bg-ilerna-negre m-0 min-h-screen text-gray-800">
+        </script>
+        <style>
+            /* La franja negra infinita */
+            .full-width-black-strip::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 300vw;
+                transform: translateX(-50%);
+                background-color: #060606;
+                z-index: -1;
+            }
 
-  <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-    <div class="flex items-center gap-3">
-      <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-          <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
-        </svg>
-      </div>
-      <div>
-        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
-      </div>
-    </div>
-    <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
-      Portal de l'Alumne
-    </div>
-  </header>
+            /* Acordió styles */
+            .accordion-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
 
-  <main class="max-w-6xl mx-auto p-6 sm:p-10">
-    <div class="mb-10 text-center sm:text-left">
-      <h2 class="text-3xl font-bold text-white mb-2">Benvingut al portal de l'aula 3.3</h2>
-      <p class="text-gray-400">Selecciona l'aplicació a la qual vols accedir.</p>
-    </div>
+            .accordion-content.open {
+                max-height: 500px;
+            }
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            .accordion-toggle svg {
+                transition: transform 0.3s ease-in-out;
+            }
 
-      <a href="./Gestor-Incidències/" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
+            .accordion-toggle.open svg {
+                transform: rotate(180deg);
+            }
+
+        </style>
+    </head>
+    <body class="bg-ilerna-fons font-fira text-ilerna-negre overflow-x-hidden">
+
+        <!-- === HEADER NAVEGACIÓ (Inicialment amagat) === -->
+        <header id="sticky-header" class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center fixed top-0 w-full z-50 transition-transform duration-300 -translate-y-full">
+            <div class="flex items-center gap-3">
+                <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+                </div>
+            </div>
+            <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                Presentació de candidatura
+            </div>
+        </header>
+
+        <!-- === SECCIÓ DEL BANNER === -->
+        <div id="banner-section" class="relative flex items-center justify-center h-screen overflow-hidden transition-all duration-700 ease-in-out">
+            <div class="main-container w-full max-w-[1600px] relative flex flex-col items-start transform-gpu -rotate-6 md:-rotate-10 scale-75 sm:scale-90 md:scale-100 lg:scale-110 xl:scale-130 transition-transform duration-300" style="transform-origin: center center;">
+            
+            <h1 class="text-ilerna-blau text-[5rem] sm:text-[8rem] md:text-[11rem] font-black uppercase leading-none ml-[10%]">
+                El teu
+            </h1>
+
+            <div class="full-width-black-strip py-4 sm:py-10 md:py-14 my-4 relative w-full flex items-center">
+                <h1 class="text-white text-[7rem] sm:text-[12rem] md:text-[18rem] font-black uppercase leading-[0.7] ml-[15%]">
+                    Vot
+                </h1>
+            </div>
+
+            <h1 class="text-ilerna-blau text-[5rem] sm:text-[8rem] md:text-[11rem] font-black uppercase leading-[0.7] ml-[25%]">
+                Defineix
+            </h1>
+            
+            <h1 class="text-ilerna-blau text-[4rem] sm:text-[7rem] md:text-[9rem] font-black uppercase leading-none ml-[30%] sm:ml-[40%] md:ml-[45%]">
+                El demà
+            </h1>
+
+            <!-- <div class="hidden md:block absolute bottom-4 sm:bottom-0 md:bottom-[-2rem] right-[5%] text-right z-10">
+                <h2 class="text-ilerna-negre text-xl sm:text-2xl md:text-4xl font-black uppercase tracking-tighter">Jan Felip</h2>
+                <p class="text-ilerna-blau text-base sm:text-lg md:text-2xl font-bold -mt-1 md:-mt-2">DAW-1</p>
+            </div> -->
+
+            </div>
+        </div>
+
+        <!-- === SECCIÓ DE CONTINGUT === -->
+        <main id="main-content" class="px-6 py-16 sm:px-10 sm:py-24 bg-white transition-all duration-300 ease-in-out">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-ilerna-negre mb-4 border-b-4 border-ilerna-blau pb-2">Qui sóc?</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Em dic Jan Felip, estudiant de DAW1, i em vull presentar com a possible delegat de classe.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Vinc de fer un batxillerat tecnològic i és el meu primer any al centre. Tot i així, he pogut viure la situació de classe des del mateix punt de vista que tots vosaltres, i és obvi que hi ha encara queda molta feina a fer per millorar la nostra convivència i eficiència.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Per això mateix, vull presentar-me com a delegat responsable, per conduir el nostre grup cap a un espai on l'opinió de tots compti i on puguem trebаllar conjuntament per a gaudir d'una classe més organitzada.
+                </p>
+
+                <h2 class="text-3xl sm:text-4xl font-bold text-ilerna-negre mb-4 mt-16 border-b-4 border-ilerna-blau pb-2">La meva proposta</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Crec en un futur on la veu de cada un compta. El meu programa es centra en tres pilars fonamentals:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 items-start">
+                    <div class="bg-gray-50 rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                        <button class="accordion-toggle w-full flex items-center gap-4 p-4 hover:bg-gray-100 transition-colors text-left">
+                            <div class="bg-ilerna-blau p-2 rounded-lg shadow-lg shadow-ilerna-blau/20 border border-cyan-300 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14v2H5v-2zM5 5h14v2H5V5zm2 4v10h2V9H7zm4 0v10h2V9h-2zm4 0v10h2V9h-2z"/></svg>
+                            </div>
+                            <div class="flex-grow">
+                                <span class="font-bold text-ilerna-negre text-lg block">Automatització</span>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-4 pb-4 text-gray-600 text-base">
+                                Es tracta de crear sistemes que redueixin les tasques manuals i repetitives. La gestió de vagues i la comunicació de d'incidències pot ser molt millor amb les eines adequades.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                        <button class="accordion-toggle w-full flex items-center gap-4 p-4 hover:bg-gray-100 transition-colors text-left">
+                            <div class="bg-ilerna-blau p-2 rounded-lg shadow-lg shadow-ilerna-blau/40 border border-cyan-300 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14v2H5v-2zM5 5h14v2H5V5zm2 4v10h2V9H7zm4 0v10h2V9h-2zm4 0v10h2V9h-2z"/></svg>
+                            </div>
+                            <div class="flex-grow">
+                                <span class="font-bold text-ilerna-negre text-lg block">Innovació</span>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-4 pb-4 text-gray-600 text-base">
+                                Vull portar noves tecnologies al dia a dia de la classe. Eines per consultar informació de l'aula, o un sistema integrat de comunicació més còmode, que millori la fluidesa de la informació.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                        <button class="accordion-toggle w-full flex items-center gap-4 p-4 hover:bg-gray-100 transition-colors text-left">
+                            <div class="bg-ilerna-blau p-2 rounded-lg shadow-lg shadow-ilerna-blau/20 border border-cyan-300 flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14v2H5v-2zM5 5h14v2H5V5zm2 4v10h2V9H7zm4 0v10h2V9h-2zm4 0v10h2V9h-2z"/></svg>
+                            </div>
+                            <div class="flex-grow">
+                                <span class="font-bold text-ilerna-negre text-lg block">Comoditat</span>
+                            </div>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="px-4 pb-4 text-gray-600 text-base">
+                                El més important és que els processos no ens compliquin la vida. Per això, aquest espai està pensat com a un espai conjunt de comunicació que sia senzill d'utilitzar per tothom.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Vull assegurar que les decisions que afecten el nostre dia a dia a l'aula es prenguin de forma comuna i garanteixin un entorn d'estudi millor.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Proposo, d'entrada, la implementació de noves eines digitals per millorar la comunicació entre alumnes i professors per la resol·lució d'incidències, un espai on consultar informació de l'aula i un sistema de tramitació de documents i vagues més eficient.
+                </p>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-ilerna-blau">
+                        <h3 class="text-xl font-bold mb-2">Innovació Tecnològica</h3>
+                        <p class="text-gray-600">Aprofitant que ens dediquem a la programació web, he creat aquest espai per millorar la comoditat de certs processos que fins ara es feien manualment.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-ilerna-blau">
+                        <h3 class="text-xl font-bold mb-2">Desenvolupament</h3>
+                        <p class="text-gray-600">Aquest espai no és definitiu, i pot estar subjecte a noves implementacions i mecàniques. Dependrà de vosaltres proposar idees d'aplicacions per afegir.</p>
+                    </div>
+                </div>
+
+                <p class="mt-12 text-lg text-gray-700 leading-relaxed">
+                    El teu vot és l'eina més poderosa per construir el demà que volem. Un demà més transparent, més connectat i més preparat per als reptes que enfrontem. Uneix-te al canvi.
+                </p>
+            </div>
+
+            <div class="flex justify-center mt-20">
+                <a href="/portal/" class="inline-flex items-center gap-2 bg-gray-100 text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:bg-gray-200 hover:-translate-y-1 transition-all">
+                    Accedir al portal
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        </main>
+
         
-        <div class="absolute -right-10 -top-10 bg-ilerna-blau/10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 group-hover:bg-ilerna-blau/20 group-hover:scale-150"></div>
 
-        <div class="flex items-center gap-4 mb-4 relative z-10">
-          <div class="bg-blue-50 text-ilerna-blau p-3 rounded-xl group-hover:bg-ilerna-blau group-hover:text-white transition-colors duration-300">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-ilerna-negre">Gestor d'Incidències</h3>
-        </div>
-        <p class="text-gray-600 text-sm mb-6 relative z-10">
-          Notifica qualsevol problema amb els equips, l'aula o el Campus Virtual per a una ràpida resolució.
-        </p>
-        <div class="flex items-center text-ilerna-blau font-bold text-sm group-hover:translate-x-1 transition-transform duration-300 relative z-10">
-          Obrir aplicació
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
-      </a>
+        <!-- === FOOTER === -->
+        <footer class="bg-white border-b-4 border-ilerna-blau pb-8 text-center">
+            <div class="max-w-6xl mx-auto px-6">
+                <p class="text-ilerna-negre font-bold text-lg">JAN FELIP <span class="text-ilerna-blau">2026</span></p>
+            </div>
+        </footer>
 
-      <a href="./Disposició-Aula/" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
-        
-        <div class="absolute -right-10 -top-10 bg-ilerna-blau/10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 group-hover:bg-ilerna-blau/20 group-hover:scale-150"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Lògica de l'acordió
+                const accordionButtons = document.querySelectorAll('.accordion-toggle');
 
-        <div class="flex items-center gap-4 mb-4 relative z-10">
-          <div class="bg-blue-50 text-ilerna-blau p-3 rounded-xl group-hover:bg-ilerna-blau group-hover:text-white transition-colors duration-300">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z M4 10h16 M12 10v10"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-ilerna-negre">Visor de l'aula</h3>
-        </div>
-        <p class="text-gray-600 text-sm mb-6 relative z-10">
-          Consulta la distribució de classe i els codis dels equips. <br><br>
-        </p>
-        <div class="flex items-center text-ilerna-blau font-bold text-sm group-hover:translate-x-1 transition-transform duration-300 relative z-10">
-          Obrir aplicació
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
-      </a>
+                accordionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const content = button.nextElementSibling;
+                        content.classList.toggle('open');
+                        button.classList.toggle('open');
+                    });
+                });
 
-      <a href="./Tràmits-Vagues/" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
-        
-        <div class="absolute -right-10 -top-10 bg-ilerna-blau/10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 group-hover:bg-ilerna-blau/20 group-hover:scale-150"></div>
+                // Lògica per mostrar/amagar el header sticky
+                const stickyHeader = document.getElementById('sticky-header');
+                const bannerSection = document.getElementById('banner-section');
+                const mainContent = document.getElementById('main-content');
+                let headerIsVisible = false;
 
-        <div class="flex items-center gap-4 mb-4 relative z-10">
-          <div class="bg-blue-50 text-ilerna-blau p-3 rounded-xl group-hover:bg-ilerna-blau group-hover:text-white transition-colors duration-300">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-ilerna-negre">Tràmits de Vagues</h3>
-        </div>
-        <p class="text-gray-600 text-sm mb-6 relative z-10">
-          Penja aquí el document pertinent per convocar una vaga. <br><br>
-        </p>
-        <div class="flex items-center text-ilerna-blau font-bold text-sm group-hover:translate-x-1 transition-transform duration-300 relative z-10">
-          Obrir aplicació
-          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </div>
-      </a>
-      <!-- <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
-        <div class="absolute top-4 right-4 bg-gray-300 text-gray-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
-          Pròximament
-        </div>
-        <div class="flex items-center gap-4 mb-4 grayscale">
-          <div class="bg-gray-200 text-gray-500 p-3 rounded-xl">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-500">Reserva d'Equips</h3>
-        </div>
-        <p class="text-gray-500 text-sm mb-6">
-          Text base.
-        </p>
-        <div class="flex items-center text-gray-400 font-bold text-sm">
-          En desenvolupament...
-        </div>
-      </div>
-
-      <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
-        <div class="absolute top-4 right-4 bg-gray-300 text-gray-700 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">
-          Pròximament
-        </div>
-        <div class="flex items-center gap-4 mb-4 grayscale">
-          <div class="bg-gray-200 text-gray-500 p-3 rounded-xl">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-gray-500">Gestió de Tutories</h3>
-        </div>
-        <p class="text-gray-500 text-sm mb-6">
-          Text base.
-        </p>
-        <div class="flex items-center text-gray-400 font-bold text-sm">
-          En desenvolupament...
-        </div>
-      </div> -->
-      
-
-    </div>
-  </main>
-
-</body>
+                window.addEventListener('scroll', () => {
+                    // Quan l'usuari baixa més de 50px, amaguem el banner i mostrem el header.
+                    if (window.scrollY > 50) {
+                        // Només executem això la primera vegada que el header es fa visible per evitar càlculs innecessaris.
+                        if (!headerIsVisible) {
+                            // Obtenim el padding-top actual (que ve de les classes de Tailwind)
+                            const currentPaddingTop = parseInt(window.getComputedStyle(mainContent).paddingTop, 10);
+                            // Calculem el nou padding: alçada del header + el padding que ja tenia.
+                            const newPadding = stickyHeader.offsetHeight + currentPaddingTop;
+                            mainContent.style.paddingTop = `${newPadding}px`;
+                            headerIsVisible = true;
+                        }
+                        stickyHeader.classList.remove('-translate-y-full');
+                        bannerSection.classList.remove('h-screen');
+                        bannerSection.classList.add('h-0', 'opacity-0');
+                    }
+                    // Per evitar el parpelleig, només tornem a mostrar el banner si l'usuari torna a dalt de tot (scroll = 0).
+                    else if (window.scrollY === 0) {
+                        // Només executem si el header estava visible prèviament.
+                        if (headerIsVisible) {
+                            // En treure l'estil inline, es torna a aplicar el padding de les classes de Tailwind.
+                            mainContent.style.paddingTop = '';
+                            headerIsVisible = false;
+                        }
+                        stickyHeader.classList.add('-translate-y-full');
+                        bannerSection.classList.add('h-screen');
+                        bannerSection.classList.remove('h-0', 'opacity-0');
+                    }
+                });
+            });
+        </script>
+    </body>
 </html>
