@@ -104,7 +104,7 @@
 
        <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
             <div class="flex items-center gap-3">
-            <div class="bg-ilerna-negre text-ilerna-fons p-2 ">
+            <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
                 <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
@@ -119,11 +119,25 @@
             Portal de l'Alumne
             </div>
         </header>
-
+        <a href="../" class="absolute top-24 right-6 z-30 inline-flex items-center gap-2 bg-gray-200 text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:-translate-y-1 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Tornar al portal
+        </a>
         <!-- === SECCIÓ DE CONTINGUT === -->
         <main id="main-content" class="px-6 py-16 sm:px-10 sm:py-24 transition-all duration-300 ease-in-out">
-            <div class="max-w-6xl mx-auto lg:grid lg:grid-cols-12 gap-6">
-                <div class="lg:col-span-9 space-y-6 pr-2 lg:pr-10">
+            <div class="w-full lg:grid lg:grid-cols-12 gap-6">
+                <aside class="hidden lg:block lg:col-span-3 sticky top-24 self-start border border-gray-200 p-4 bg-ilerna-fons/80">
+                    <h3 class="text-lg font-bold text-ilerna-negre mb-3">Índex (Règim Intern)</h3>
+                    <ul class="space-y-2 text-sm text-ilerna-negre">
+                        <li><a href="#faltes-sancions" class="underline hover:text-ilerna-blau">1. Faltes i sancions</a></li>
+                        <li><a href="#absencies" class="underline hover:text-ilerna-blau">2. Absències</a></li>
+                        <li><a href="#retards" class="underline hover:text-ilerna-blau">3. Retards</a></li>
+                        <li><a href="#normes-espais" class="underline hover:text-ilerna-blau">4. Normes i recomanacions</a></li>
+                        <li><a href="#normes-internet" class="underline hover:text-ilerna-blau">5. Normes internet</a></li>
+                        <li><a href="#normes-mobils" class="underline hover:text-ilerna-blau">6. Normes mòbils</a></li>
+                    </ul>
+                </aside>
+                <div class="lg:col-span-9 space-y-6">
                     <h2 class="text-3xl sm:text-4xl font-bold text-ilerna-negre mb-2 border-b-4 border-ilerna-blau pb-2">RÈGIM INTERN</h2>
 
                     <!-- 1. FALTES I SANCIONS -->
@@ -158,8 +172,57 @@
                                             </tr>
                                             <tr>
                                                 <th class="p-2 border border-gray-300 font-semibold">Tipus</th>
-                                                <td class="p-2 border border-gray-300">Insereix text aquí</td>
-                                                <td class="p-2 border border-gray-300">Insereix text aquí</td>
+                                                <td class="p-2 border border-gray-300">
+                                                    <ol class="list-decimal pl-5">
+                                                        <li>4 Retards</li>
+                                                        <li>2 Faltes d'assistència injustificades</li>
+                                                        <li>Incorrecció, desconsideració, "no saber estar" a classe, com per exemple:
+                                                            <ul class="list-disc pl-5">
+                                                                <li>Cridar o moure's del lloc sense autorització</li>
+                                                                <li>Molestar els companys</li>
+                                                                <li>Moure de lloc la taula o altres equipaments de l'espai sense autorització</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Actes que alterin l'activitat normal de la classe o del Centre, com per exemple:
+                                                            <ul class="list-disc pl-5">
+                                                                <li>No portar el material, estar a llocs no autoritzats o no estar atent a les explicacions</li>
+                                                                <li>No esperar al professor/a de guàrida, no fer la feina, jugar, escoltar música, cridar i/o destorbar</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Actes contra la higiene, salut, civisme i educació, com per exemple:
+                                                            <ul class="list-disc pl-5">
+                                                                <li>Menjar, mastegar o beure a classe</li>
+                                                                <li>Embrutar (llençar papers, escopir...) els espais comuns i de treball (incloent mobiliari i altres equipaments dels mateixos)</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Faltes lleus en lús d'internet o recursos informàtics <a class="italic font-bold hover:text-ilerna-blau duration-200" href="#normes-internet">(Veure apartat 5)</a></li>
+                                                        <li>Faltes lleus en l'ús de dispositius mòbils <a class="italic font-bold hover:text-ilerna-blau duration-200" href="#normes-mobils">(Veure apartat 6)</a></li>
+                                                    </ol>
+                                                </td>
+                                                <td class="p-2 border border-gray-300">
+                                                    <ol class="list-decimal pl-5">
+                                                        <li>Acumulació de 8 retards</li>
+                                                        <li>Acumulació de 6 faltes injustificades a una matèria</li>
+                                                        <li>Deteriorament intencionat de les dependències i del material del Centre o dels companys/es.</li>
+                                                        <li>Actes d'indisciplina o injúries contra els membres de la comunitat educativa, com per exemple:
+                                                            <ul class="list-disc pl-5">
+                                                                <li>Insults, mala educació, contestar malament, cridar i/o faltes de respecte</li>
+                                                                <li>No fer cas de les indicacions del professorat</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Actes distorsionadors greus, al Centre i/o a les empreses on es duu a terme la formació pràctica en el centre de treball, com per exemple:
+                                                            <ul class="list-disc pl-5">
+                                                                <li>Incompliment de les sancions proposades pel Centre</li>
+                                                                <li>Sostracció d'objectes o pertinences dels membres de la comunitat educativa</li>
+                                                                <li>Sortir del Centre sense autorització</li>
+                                                                <li>Incompliment de les pautes de comportament de la formació pràctica en el centre de treball</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>Actituds reiterades de mal comportament i falta de treball</li>
+                                                        <li>Faltes greus en l'ús d'internet i recursos informàtics <a class="italic font-bold hover:text-ilerna-blau duration-200" href="#normes-internet">(Veure apartat 5)</a></li>
+                                                        <li>Faltes greus en l'ús de dispositius mòbils <a class="italic font-bold hover:text-ilerna-blau duration-200" href="#normes-mobils">(Veure apartat 6)</a></li>
+                                                    </ol>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <th class="p-2 border border-gray-300 font-semibold">Qui les sanciona</th>
@@ -168,8 +231,8 @@
                                             </tr>
                                             <tr>
                                                 <th class="p-2 border border-gray-300 font-semibold">Mesures corretores i sancions</th>
-                                                <td class="p-2 border border-gray-300">Insereix text aquí</td>
-                                                <td class="p-2 border border-gray-300">Insereix text aquí</td>
+                                                <td class="p-2 border border-gray-300">Amonestació oral per part del professor/a o del tutor/a<br>Posar deures extra de la matèria per l'endemà.<br>Privació del temps d'esbarjo. El professor/a que estableix la mesura se'n responsabilitza.<br>Permanència al centre després de l'horari escolar. En aquest cas cal avisar als pares/tutors legals i demanar-los la seva conformitat.<br>Expulsio de l'aula per tota la classe. En aquest cas, cal anar al professor/a de guàrdia amb feina per fer.</td>
+                                                <td class="p-2 border border-gray-300">Realització de tasques educadores per part de l'alumne al Centre, a l'hora d'esbarjo o fora de l'horari escolar, per un període no superior a 15 dies.<br>Reparació econòmica dels danys causats als materials del Centre o bé a altres membres de la comunitat educativa.<br>Suspensió temporal al dret a participar en activitats extraescolars o complementàries per un període no superior a 1 mes.<br>Suspensió del dret d'assistència a determinades classes, per un període no superior a 15 dies i realització de treballs acadèmics al Centre. En cap cas l'alumne perdrà el dret a ser avaluat.</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -404,17 +467,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>                <aside class="hidden lg:block lg:col-span-3 sticky top-24 self-start border border-gray-200 p-4 bg-ilerna-fons/80">
-                    <h3 class="text-lg font-bold text-ilerna-negre mb-3">Índex (Règim Intern)</h3>
-                    <ul class="space-y-2 text-sm text-ilerna-negre">
-                        <li><a href="#faltes-sancions" class="underline hover:text-ilerna-blau">1. Faltes i sancions</a></li>
-                        <li><a href="#absencies" class="underline hover:text-ilerna-blau">2. Absències</a></li>
-                        <li><a href="#retards" class="underline hover:text-ilerna-blau">3. Retards</a></li>
-                        <li><a href="#normes-espais" class="underline hover:text-ilerna-blau">4. Normes i recomanacions</a></li>
-                        <li><a href="#normes-internet" class="underline hover:text-ilerna-blau">5. Normes internet</a></li>
-                        <li><a href="#normes-mobils" class="underline hover:text-ilerna-blau">6. Normes mòbils</a></li>
-                    </ul>
-                </aside>
+            </div>
             </div>        </main>
 
         
