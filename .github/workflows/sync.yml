@@ -21,15 +21,21 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
 
-          # Clona el destí usant el token que acabes de crear
+          # 1. Clonar el repositori de DESTÍ en una carpeta anomenada 'desti'
           git clone https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git desti
 
-          # Sincronitza fitxers (això esborra al destí el que no estigui a l'origen)
-          rsync -av --delete --exclude '.git' --exclude '.github' ./ desti/
+          # 2. Esborrar tot el contingut del destí (excepte la carpeta .git)
+          # Això ens deixa el repositori net per rebre la versió nova
+          find desti -mindepth 1 -maxdepth 1 -not -name ".git" -exec rm -rf {} +
 
+          # 3. Copiar tot el contingut de l'origen al destí
+          # Evitem copiar la carpeta .git i la carpeta de l'action mateixa
+          cp -rv ./* desti/ 2>/dev/null || true
+          rm -rf desti/desti  # Evitem que es copiï a si mateix si la carpeta 'desti' és a dins
+
+          # 4. Fer el push
           cd desti
           git add .
-          # Només fem el push si realment hi ha canvis per evitar errors buits
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Sincronització automàtica: $(date)"
             git push origin main
