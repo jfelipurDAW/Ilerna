@@ -1,0 +1,20 @@
+name: Sincronitzar a IlernaDAW
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  git-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+
+      - name: Contingut Sincronitzat
+        run: |
+          git remote add destination https://${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git
+          git push -f destination main
