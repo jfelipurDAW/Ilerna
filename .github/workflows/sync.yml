@@ -9,24 +9,28 @@ jobs:
   git-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout origen
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
           persist-credentials: false
 
-      - name: Push a IlernaDAW
+      - name: Sincronització
         env:
-          TOKEN: ${{ secrets.SYNC_TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.SYNC_TOKEN }}
         run: |
+          # 1. Configurar identitat
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          
-          # Netegem qualsevol configuració prèvia d'autenticació de l'Action
-          git remote rm destination || true
-          
-          # Intentem la connexió amb el format d'usuari:token
-          git remote add destination https://jfelipurdaw:${TOKEN}@github.com/ilernadaw/ilernadaw.github.io.git
-          
-          # Forcem la pujada
-          git push -f destination main
+
+          # 2. Clonar el repositori de DESTÍ en una carpeta a part
+          git clone https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git desti
+
+          # 3. Copiar els fitxers de l'origen (actual) al destí (excepte la carpeta .git)
+          # Això assegura que el destí tingui exactament el mateix que l'origen
+          rsync -av --delete --exclude '.git' --exclude '.github' ./ desti/
+
+          # 4. Fer el push des de la carpeta de destí
+          cd desti
+          git add .
+          git commit -m "Sincronització automàtica: $(date)" || echo "No hi ha canvis per pujar"
+          git push origin main
