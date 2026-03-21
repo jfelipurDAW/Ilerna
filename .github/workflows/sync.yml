@@ -15,14 +15,18 @@ jobs:
           fetch-depth: 0 
           persist-credentials: false
 
-      - name: Contingut Sincronitzat
+      - name: Push a IlernaDAW
+        env:
+          TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: |
-          # Configurem un usuari de git temporal per a l'acció
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           
-          # Afegim el destí amb el token
-          git remote add destination https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git
+          # Netegem qualsevol configuració prèvia d'autenticació de l'Action
+          git remote rm destination || true
           
-          # Intentem pujar a 'main', si falla, intentem 'master'
-          git push -f destination HEAD:main || git push -f destination HEAD:master
+          # Intentem la connexió amb el format d'usuari:token
+          git remote add destination https://jfelipurdaw:${TOKEN}@github.com/ilernadaw/ilernadaw.github.io.git
+          
+          # Forcem la pujada
+          git push -f destination main
