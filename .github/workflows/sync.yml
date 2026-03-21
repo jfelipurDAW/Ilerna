@@ -18,8 +18,8 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.SYNC_TOKEN }}
         run: |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Action"
+          git config --global user.email "jfelipurDAW.github.io"
+          git config --global user.name "jfelipurDAW"
 
           # 1. Clonar el repositori de DESTÍ en una carpeta anomenada 'desti'
           git clone https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git desti
