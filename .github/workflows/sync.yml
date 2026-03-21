@@ -10,12 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 
           persist-credentials: false
 
       - name: Contingut Sincronitzat
         run: |
-          git remote add destination https://${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git
-          git push -f destination main
+          # Configurem un usuari de git temporal per a l'acció
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          
+          # Afegim el destí amb el token
+          git remote add destination https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/ilernadaw/ilernadaw.github.io.git
+          
+          # Intentem pujar a 'main', si falla, intentem 'master'
+          git push -f destination HEAD:main || git push -f destination HEAD:master
