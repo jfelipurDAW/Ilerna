@@ -127,7 +127,7 @@
         <main id="main-content" class="px-6 py-16 sm:px-10 sm:py-24 transition-all duration-300 ease-in-out">
             <div class="w-full lg:grid lg:grid-cols-12 gap-6">
                 <aside class="hidden lg:block lg:col-span-3 sticky top-24 self-start border border-gray-200 p-4 bg-ilerna-fons/80">
-                    <h3 class="text-lg font-bold text-ilerna-negre mb-3">Índex (Règim Intern)</h3>
+                    <h3 class="text-lg font-bold text-ilerna-negre mb-3">RÈGIM INTERN</h3>
                     <ul class="space-y-2 text-sm text-ilerna-negre">
                         <li><a href="#faltes-sancions" class="underline hover:text-ilerna-blau">1. Faltes i sancions</a></li>
                         <li><a href="#absencies" class="underline hover:text-ilerna-blau">2. Absències</a></li>
@@ -416,7 +416,7 @@
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
                     <div class="accordion-content open px-4 pb-4">
-                        <p>Dins de qualsevol espai del Centre, continuen sent vigents les normes descrites al punt <a class="font-bold hover:text-ilerna-blau duration-200" href="#faltes-sancions">1. Faltes i Sancions</a> però, a més, s'estableixen normes específiques que s'indiquen per als següents espais:</p>
+                        <p>Dins de qualsevol espai del Centre, continuen sent vigents les normes descrites al punt <a class="font-bold hover:text-ilerna-blau duration-200" href="#faltes-sancions">1. FALTES I SANCIONS</a> però, a més, s'estableixen normes específiques que s'indiquen per als següents espais:</p>
 
                         <div class="space-y-3">
                             <div class="accordion-box border-b border-gray-200">
@@ -426,9 +426,29 @@
                                 </button>
                                 <div class="accordion-content open px-4 pb-3">
                                     <ul class="list-disc pl-6 text-ilerna-negre space-y-1">
-                                        <li>Insereix text aquí</li>
-                                        <li>Insereix text aquí</li>
-                                        <li>Insereix text aquí</li>
+                                        <li>Cal respectar i tenir cura de tot l'equipament informàtic de que disposen (programari i màquines incloses).</li>
+                                        <li>Es respectaran els horaris d'ocupació d'aquests espais.</li>
+                                        <li>No es deixarà disposar d'aquests espais a cap alumne/a sense la presència d'algun professor/a que, com a màxim responsable, vetllarà pel bon ús del mateix i notificarà al 
+                                            <span class="group relative inline-block cursor-help border-b border-dotted border-gray-400">
+                                                responsable de manteniment informàtic
+                                                <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300 absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-50">
+                                                    <div class="bg-black text-ilerna-fons text-sm font-semibold px-3 py-1 rounded-md shadow-lg relative whitespace-nowrap">
+                                                        <span class="responsable-de-manteniment-informatic-nom"></span>
+                                                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1.5 w-2 h-2 bg-black rotate-45 rounded-sm"></div>
+                                                    </div>
+                                                </div>
+                                            </span> qualsevol anomalia o incidència (mal funcionament, averia, mancança, trencament, etc.) que detecti a l'inici o al llarg de la classe.</li>
+                                        <li>En finalitzar el seu ús, aquestes aules romandran sempre tancades amb clau (també es tancaran finestres i aires acondicionats).</li>
+                                        <li>No està permès fumar, beure i/o menjar-hi.</li>
+                                        <li>No està permès jugar o emprar els ordinadors i/o material per a qualsevol altra utilitat que no sigui la pròpia marcada pel professorat i/o per les activitats a desenvolupar per la classe que s'està impartint en aquell moment.</li>
+                                        <li>S'assignarà de forma permanent el lloc de treball (ordinador i/o resta de material) o espai de treball que emprarà un alumne/a al llarg de la classe (o al llarg del curs, si s'escau) passant a ser aquest/a per tant, el/la corresponent responsable d'aquest lloc de treball i material, la qual cosa implicarà:
+                                            <ul class="list-disc pl-5">
+                                                <li>En iniciar la classe, l'alumne/a validarà que tot està correcte i, en cas del contrari, ho notificarà al corresponent professor/a.</li>
+                                                <li>Davant de qualsevol anomalia o incidència (mal funcionament, avaria, etc.) que es produeixi al llarg de la classe, l'alumne/a també ho notificarà al professor/a corresponent.</li>
+                                                <li>Al finalitzar la classe l'alumne/a es responsabilitzarà de desar i deixar-ho tot correcte, ordenat i net.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Cal respectar i tenir el compte tot el que es descriu al punt <a class="font-bold hover:text-ilerna-blau duration-200" href="#normes-internet">5. NORMES DEL BON ÚS D'INTERNET I DELS RECURSOS INFORMÀTICS</a>.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -577,6 +597,7 @@
             const centreConfig = {
                 "capEstudis": "Isa",
                 "capDeDepartament": "Isa",
+                "responsableDeMantenimentInformatic": "No establert*",
                 "direccio": "No establert*"
             };
 
@@ -614,6 +635,12 @@
                 const tooltipSpansDireccio = document.querySelectorAll('.cap-direccio-nom, #tooltip-cap-direccio-nom');
                 tooltipSpansDireccio.forEach(span => {
                     span.textContent = centreConfig.direccio;
+                });
+
+                // Lògica del tooltip de Responsable de manteniment informàtic
+                const tooltipSpansResponsableManteniment = document.querySelectorAll('.responsable-de-manteniment-informatic-nom, #tooltip-responsable-de-manteniment-informatic-nom');
+                tooltipSpansResponsableManteniment.forEach(span => {
+                    span.textContent = centreConfig.responsableDeMantenimentInformatic;
                 });
 
                 //Lògica del tooltip de definició de MP
