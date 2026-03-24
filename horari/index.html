@@ -60,7 +60,7 @@
     <!-- 
       Contenidor principal que defineix l'alçada (80vh) i retalla el que sobri (overflow-hidden).
     -->
-    <div class="bg-white p-0 sm:p-0 rounded-xl shadow-sm border-l-4 border-ilerna-blau h-[70vh] overflow-hidden">
+    <div class="bg-white p-0 sm:p-0 rounded-xl shadow-sm border-l-4 border-ilerna-blau h-[70vh] overflow-hidden pointer-events-none sm:pointer-events-auto">
       <!-- 
         TRUC CSS: Aquest div intern és molt més alt que el contenidor i el movem cap amunt 
         amb 'transform' per amagar les hores del matí.
@@ -80,10 +80,7 @@
           frameborder="0">
         </iframe>
       </div>
-      <!--Quan està al mòbil, si es clica es desplaça i es deixa de veure. Fes que a la visió de telèfon no es pugui clicar res del calendari o corregeix el tema del desplaçament
-    -->
     </div>
-
   </main>
 </body>
 </html>
