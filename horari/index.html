@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../icon128.png">
-  <title>⚠️ En desenvolupament</title>
+  <title>Portal DAW1</title>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -22,6 +22,18 @@
       }
     }
   </script>
+  <style>
+    /* Amaga la barra de desplaçament per a Chrome, Safari i Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Amaga la barra de desplaçament per a IE, Edge i Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE i Edge */
+      scrollbar-width: none;  /* Firefox */
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body class="font-sans bg-ilerna-negre m-0 min-h-screen text-gray-800">
 
@@ -57,27 +69,15 @@
     </div>
 
       
-    <!-- 
-      Contenidor principal que defineix l'alçada (80vh) i retalla el que sobri (overflow-hidden).
-    -->
-    <div class="bg-white rounded-xl shadow-sm border-l-4 border-ilerna-blau h-[70vh] overflow-hidden pointer-events-none sm:pointer-events-auto">
-      <!-- 
-        TRUC CSS: Aquest div intern és molt més alt que el contenidor i el movem cap amunt 
-        amb 'transform' per amagar les hores del matí.
-        Pots ajustar el valor de 'translateY' per canviar l'hora d'inici visible.
-        - Un valor més negatiu (ex: -700px) mostrarà hores més tardanes.
-        - Un valor menys negatiu (ex: -600px) mostrarà hores més primerenques.
-        El valor -650px fa que comenci a les 15:00 aproximadament.
-
-        TRUC PER AMAGAR CAP DE SETMANA: 'width: 140%' estira el calendari horitzontalment.
-        Com que mostrem 7 dies, en fer-ho més gran, els últims 2 (dissabte i diumenge) queden retallats.
-      -->
-      <div style="height: 2200px;">
+    <div class="bg-white rounded-xl shadow-sm border-l-4 border-ilerna-blau h-[70vh] overflow-y-auto no-scrollbar overflow-x-hidden">
+      <!-- Contenidor intern amb alçada fixa per unificar l'scroll en el pare -->
+      <div class="w-full" style="height: 850px;">
         <iframe 
           src="https://script.google.com/a/macros/alumnes.ilerna.com/s/AKfycbz5IURl512-8s4YYpmXlZQlBXcX8aimPEnRQCJa8zqvRJSRzzLByjkTF-PTk9Of-Qrm3g/exec" 
-          class="w-full h-full"
+          class="w-full h-full pointer-events-none sm:pointer-events-auto"
           style="border:0;" 
-          frameborder="0">
+          frameborder="0"
+          scrolling="no">
         </iframe>
       </div>
     </div>
