@@ -6,6 +6,7 @@
   <link rel="icon" type="image/png" href="./icon128.png">
   <title>Portal DAW1</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -17,6 +18,9 @@
               negre: '#060606',
               fons: '#ffffff'
             }
+          },
+          fontFamily: {
+            'seven-seg': 'Orbitron, monospace'
           }
         }
       }
@@ -66,6 +70,22 @@
              <p id="next-class-times" class="text-sm text-gray-500 font-medium">--</p>
         </div>
       </div>
+    </div>
+
+    <!-- Contador full-width -->
+    <div class="w-full mb-12">
+      <a href="https://campus.ilerna.com/ultra/courses/_15386_1/outline" target="_blank" class="group block bg-gradient-to-r from-red-950 to-red-900 rounded-2xl shadow-lg border-t-[6px] border-red-600 px-8 py-20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-600/30 focus:outline-none focus:ring-4 focus:ring-red-600/50 relative overflow-hidden cursor-pointer">
+        
+        <div class="absolute -right-10 -top-10 bg-red-600/10 w-40 h-40 rounded-full blur-2xl transition-all duration-500 group-hover:bg-red-600/20 group-hover:scale-150"></div>
+        
+        <div class="text-center relative z-10">
+          <!-- <h3 class="text-lg font-bold text-red-300 uppercase tracking-widest mb-4">Compte enrere</h3> -->
+          <div class="font-seven-seg text-6xl md:text-7xl font-bold text-red-500 tracking-wider" id="contador" style="font-family: 'Orbitron', 'Courier New', monospace; text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); letter-spacing: 0.1em;">
+            00 : 00 : 00 : 00
+          </div>
+          <!-- <p class="text-red-300 text-sm mt-4 uppercase tracking-wide">Finalitza el 9 de maig de 2026 a les 23:59</p> -->
+        </div>
+      </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -283,5 +303,35 @@
   </footer>
 
   <script src="script.js"></script>
+  
+  <script>
+    function actualizarContador() {
+      const ahora = new Date();
+      const destino = new Date('2026-05-09T23:59:59').getTime();
+      const diferencia = destino - ahora.getTime();
+
+      if (diferencia > 0) {
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+        const formateado = 
+          String(dias).padStart(2, '0') + ' : ' +
+          String(horas).padStart(2, '0') + ' : ' +
+          String(minutos).padStart(2, '0') + ' : ' +
+          String(segundos).padStart(2, '0');
+
+        document.getElementById('contador').textContent = formateado;
+      } else {
+        document.getElementById('contador').textContent = '00 : 00 : 00 : 00';
+      }
+    }
+
+    // Actualizar contador al cargar la página
+    actualizarContador();
+    // Actualizar cada segundo
+    setInterval(actualizarContador, 1000);
+  </script>
 </body>
 </html>
