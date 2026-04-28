@@ -157,6 +157,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </div>
+        <div id="cronometre-ultima-vaga" title="Des de la darrera vegada que es va convocar una vaga" class="absolute bottom-[10px] right-[10px] hover:bg-gray-300 bg-transparent hover:text-gray-700 text-white text-[10px] font-bold px-1 py-1 rounded uppercase tracking-wide">
+          10:10:10
+        </div>
       </a>
 
       <a href="./consultor-de-tutories/" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
@@ -332,6 +335,47 @@
     actualizarContador();
     // Actualizar cada segundo
     setInterval(actualizarContador, 1000);
+
+    function actualizarCronometre() {
+      const inici = new Date('2026-04-20T17:53:16');
+      const ara = new Date();
+
+      if (ara < inici) {
+        document.getElementById('cronometre-ultima-vaga').textContent = '0m 0d 00:00:00';
+        return;
+      }
+
+      let mesos = (ara.getFullYear() - inici.getFullYear()) * 12 + (ara.getMonth() - inici.getMonth());
+      const mesDate = new Date(inici.getTime());
+      mesDate.setMonth(mesDate.getMonth() + mesos);
+
+      if (mesDate > ara) {
+        mesos -= 1;
+        mesDate.setMonth(mesDate.getMonth() - 1);
+      }
+
+      const diferencia = ara.getTime() - mesDate.getTime();
+      const dies = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const hores = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minuts = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segons = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      const parts = [];
+      if (mesos > 0) parts.push(String(mesos) + 'm');
+      if (dies > 0) parts.push(String(dies) + 'd');
+      parts.push(
+        String(hores).padStart(2, '0') + ':' +
+        String(minuts).padStart(2, '0') + ':' +
+        String(segons).padStart(2, '0')
+      );
+
+      document.getElementById('cronometre-ultima-vaga').textContent = parts.join(' ');
+    }
+
+    // Actualitzar cronòmetre al carregar la pàgina
+    actualizarCronometre();
+    // Actualitzar cada segon
+    setInterval(actualizarCronometre, 1000);
   </script>
 </body>
 </html>
