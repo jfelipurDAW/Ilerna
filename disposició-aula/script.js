@@ -29,9 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÒGICA DE L'HORARI ---
 
-    const schedule = [
-        // Pots modificar aquest horari amb les teves classes.
-        // day: 1=Dilluns, 2=Dimarts, ..., 5=Divendres, 0=Diumenge
+    let schedule = [
+        // Recanvi si no carrega ../api/horari.json
         { day: 1, start: "15:20", end: "16:15", name: "Programació", teacher: "Flor Martínez" },
         { day: 1, start: "16:15", end: "18:05", name: "Anglès", teacher: "Anna Ruiz" },
         { day: 1, start: "18:05", end: "18:30", name: "Esbarjo", teacher: "" },
@@ -153,8 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Not showing next class by request — only the current class is displayed.
     }
 
-    updateView();
-    // Netegem labels buits per evitar fons/restes visuals
     function cleanEmptyLabels() {
         const cards = document.querySelectorAll('.cards > div');
         cards.forEach(card => {
@@ -168,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     nameDiv.style.border = 'none';
                     nameDiv.style.padding = '0';
                 } else {
-                    // restore defaults if needed
                     nameDiv.style.background = '';
                     nameDiv.style.color = '';
                     nameDiv.style.border = '';
@@ -191,9 +187,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    cleanEmptyLabels();
-    setInterval(updateView, 1000);
-    // also re-run cleanup after each update in case content changes dynamically
-    const originalUpdate = updateView;
-    updateView = function() { originalUpdate(); cleanEmptyLabels(); };
+
+    fetch("../api/horari.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+            if (data && data.classes && data.classes.length) {
+                schedule = data.classes;
+            }
+        })
+        .catch(function () {})
+        .then(function () {
+            return fetch("../api/aula.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+        })
+        .then(function (aula) {
+            if (aula && aula.equips) {
+                const mapa = {};
+                aula.equips.forEach(function (e) {
+                    if (e && e.codi) {
+                        mapa[String(e.codi).trim()] = e.persona ? String(e.persona) : "";
+                    }
+                });
+                document.querySelectorAll(".cards > div").forEach(function (card) {
+                    const parts = card.querySelectorAll(":scope > div");
+                    if (parts.length < 2) {
+                        return;
+                    }
+                    const pc = String(parts[1].textContent || "").replace(/\s+/g, " ").trim();
+                    if (!pc) {
+                        return;
+                    }
+                    parts[0].textContent = mapa[pc] ? mapa[pc] : " ";
+                });
+            }
+            updateView();
+            cleanEmptyLabels();
+            setInterval(function () {
+                updateView();
+                cleanEmptyLabels();
+            }, 1000);
+        });
 });

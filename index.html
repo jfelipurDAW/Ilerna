@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="./icon128.png">
-  <title>Portal DAW1</title>
+  <title>Portal DAW2</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   
@@ -30,7 +30,7 @@
 <body class="font-sans bg-ilerna-negre m-0 min-h-screen text-gray-800 flex flex-col">
 
   <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-    <div class="flex items-center gap-3">
+    <a href="./" class="flex items-center gap-3">
       <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
@@ -39,12 +39,12 @@
         </svg>
       </div>
       <div>
-        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW2</span></h1>
       </div>
-    </div>
-    <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+    </a>
+    <a href="./" class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-ilerna-blau transition-colors">
       Portal de l'Alumne
-    </div>
+    </a>
   </header>
 
   <main class="max-w-6xl w-full mx-auto p-6 sm:p-10 flex-grow">
@@ -73,20 +73,20 @@
     </div>
 
     <!-- Contador full-width -->
-    <div class="w-full mb-12">
+    <!-- <div class="w-full mb-12">
       <a href="https://campus.ilerna.com/ultra/courses/_15386_1/outline" target="_blank" class="group block bg-gradient-to-r from-red-950 to-red-900 rounded-2xl shadow-lg border-t-[6px] border-red-600 px-8 py-20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-600/30 focus:outline-none focus:ring-4 focus:ring-red-600/50 relative overflow-hidden cursor-pointer">
         
         <div class="absolute -right-10 -top-10 bg-red-600/10 w-40 h-40 rounded-full blur-2xl transition-all duration-500 group-hover:bg-red-600/20 group-hover:scale-150"></div>
         
         <div class="text-center relative z-10">
-          <!-- <h3 class="text-lg font-bold text-red-300 uppercase tracking-widest mb-4">Compte enrere</h3> -->
+          <h3 class="text-lg font-bold text-red-300 uppercase tracking-widest mb-4">Compte enrere</h3>
           <div class="font-seven-seg text-6xl md:text-7xl font-bold text-red-500 tracking-wider" id="contador" style="font-family: 'Orbitron', 'Courier New', monospace; text-shadow: 0 0 10px rgba(239, 68, 68, 0.5); letter-spacing: 0.1em;">
             00 : 00 : 00 : 00
           </div>
-          <!-- <p class="text-red-300 text-sm mt-4 uppercase tracking-wide">Finalitza el 9 de maig de 2026 a les 23:59</p> -->
+          <p class="text-red-300 text-sm mt-4 uppercase tracking-wide">Finalitza el 9 de maig de 2026 a les 23:59</p>
         </div>
       </a>
-    </div>
+    </div> -->
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
@@ -157,7 +157,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </div>
-        <div id="cronometre-ultima-vaga" title="Des de la darrera vegada que es va convocar una vaga" class="absolute bottom-[10px] right-[10px] hover:bg-gray-300 bg-transparent hover:text-gray-700 text-white text-[10px] font-bold px-1 py-1 rounded uppercase tracking-wide">
+        <div id="cronometre-ultima-vaga" title="Des de la darrera vegada que es va convocar una vaga" class="absolute bottom-[10px] right-[10px] z-10 opacity-0 group-hover:opacity-100 text-gray-500 text-[10px] font-bold px-1 py-1 rounded uppercase tracking-wide transition-opacity duration-200">
           10:10:10
         </div>
       </a>
@@ -256,22 +256,28 @@
         </div>
       </a>
 
-      <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
-        <div class="flex items-center gap-4 mb-4 grayscale">
-          <div class="bg-gray-200 text-gray-500 p-3 rounded-xl">
+      <a href="./règim-intern/" class="group block bg-ilerna-fons rounded-2xl shadow-lg border-t-[6px] border-ilerna-blau p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-ilerna-blau/20 focus:outline-none focus:ring-4 focus:ring-ilerna-blau/50 relative overflow-hidden">
+        
+        <div class="absolute -right-10 -top-10 bg-ilerna-blau/10 w-32 h-32 rounded-full blur-2xl transition-all duration-500 group-hover:bg-ilerna-blau/20 group-hover:scale-150"></div>
+
+        <div class="flex items-center gap-4 mb-4 relative z-10">
+          <div class="bg-blue-50 text-ilerna-blau p-3 rounded-xl group-hover:bg-ilerna-blau group-hover:text-white transition-colors duration-300">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-gray-500">Règim intern</h3>
+          <h3 class="text-xl font-bold text-ilerna-negre">Règim intern</h3>
         </div>
-        <p class="text-gray-500 text-sm mb-6">
+        <p class="text-gray-600 text-sm mb-6 relative z-10">
           Consulta la normativa del centre. <br><span class="italic">No crec que ho utilitzis, però sempre va bé tenir-ho a mà</span><br>
         </p>
-        <div class="flex items-center text-gray-400 font-bold text-sm">
-          En desenvolupament...
+        <div class="flex items-center text-ilerna-blau font-bold text-sm group-hover:translate-x-1 transition-transform duration-300 relative z-10">
+          Obrir aplicació
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
         </div>
-      </div>
+      </a>
       
 
       <!-- <div class="block bg-gray-100 rounded-2xl shadow border-t-[6px] border-gray-300 p-6 opacity-75 cursor-not-allowed relative">
@@ -298,7 +304,7 @@
     </div>
   </main>
 
-  <footer class="w-full px-6 sm:px-10 pb-10 flex justify-end">
+  <footer class="w-full px-6 sm:px-10 pb-10 flex justify-start">
       <a href="https://github.com/IlernaDAW/IlernaDAW.github.io" class="hidden sm:inline-flex items-center gap-2 bg-ilerna-fons text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:bg-gray-50 hover:-translate-y-1 transition-all">
         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M7.976 0A7.977 7.977 0 0 0 0 7.976c0 3.522 2.3 6.507 5.431 7.584c.392.049.538-.196.538-.392v-1.37c-2.201.49-2.69-1.076-2.69-1.076c-.343-.93-.881-1.175-.881-1.175c-.734-.489.048-.489.048-.489c.783.049 1.224.832 1.224.832c.734 1.223 1.859.88 2.3.685c.048-.538.293-.88.489-1.076c-1.762-.196-3.621-.881-3.621-3.964c0-.88.293-1.566.832-2.153c-.05-.147-.343-.978.098-2.055c0 0 .685-.196 2.201.832c.636-.196 1.322-.245 2.007-.245s1.37.098 2.006.245c1.517-1.027 2.202-.832 2.202-.832c.44 1.077.146 1.908.097 2.104a3.16 3.16 0 0 1 .832 2.153c0 3.083-1.86 3.719-3.62 3.915c.293.244.538.733.538 1.467v2.202c0 .196.146.44.538.392A7.98 7.98 0 0 0 16 7.976C15.951 3.572 12.38 0 7.976 0" clip-rule="evenodd"/></svg>
         Accedir al repositori
@@ -308,6 +314,7 @@
   <script src="script.js"></script>
   
   <script>
+    /*
     function actualizarContador() {
       const ahora = new Date();
       const destino = new Date('2026-05-09T23:59:59').getTime();
@@ -335,13 +342,17 @@
     actualizarContador();
     // Actualizar cada segundo
     setInterval(actualizarContador, 1000);
+    */
 
     function actualizarCronometre() {
+      const el = document.getElementById('cronometre-ultima-vaga');
+      if (!el) return;
+
       const inici = new Date('2026-04-20T17:53:16');
       const ara = new Date();
 
       if (ara < inici) {
-        document.getElementById('cronometre-ultima-vaga').textContent = '0m 0d 00:00:00';
+        el.textContent = '0m 0d 00:00:00';
         return;
       }
 
@@ -369,7 +380,7 @@
         String(segons).padStart(2, '0')
       );
 
-      document.getElementById('cronometre-ultima-vaga').textContent = parts.join(' ');
+      el.textContent = parts.join(' ');
     }
 
     // Actualitzar cronòmetre al carregar la pàgina
@@ -377,5 +388,6 @@
     // Actualitzar cada segon
     setInterval(actualizarCronometre, 1000);
   </script>
+  <script src="./xatbot-widget.js"></script>
 </body>
 </html>
