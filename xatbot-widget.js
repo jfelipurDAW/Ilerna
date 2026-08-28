@@ -26,6 +26,9 @@
     "#daw-xat-fil .msg a.daw-xat-enllac:hover{color:#155e75;}",
     "#daw-xat-fil .is-user a.daw-xat-enllac{color:#7ee3f0;}",
     "#daw-xat-fil .is-user a.daw-xat-enllac:hover{color:#fff;}",
+    "#daw-xat-fil .msg a.daw-xat-enllac.daw-xat-apartat{color:inherit;font-weight:700;text-decoration:none;cursor:pointer;transition:color .15s ease;}",
+    "#daw-xat-fil .msg a.daw-xat-enllac.daw-xat-apartat:hover{color:#4fbccd;}",
+    "#daw-xat-fil .is-user a.daw-xat-enllac.daw-xat-apartat:hover{color:#4fbccd;}",
     "#daw-xat-fil .is-user{align-self:flex-end;background:#060606;color:#fff;border-bottom-right-radius:4px;}",
     "#daw-xat-fil .is-bot{align-self:flex-start;background:#f3f4f6;border-bottom-left-radius:4px;}",
     "#daw-xat-fil .is-err{align-self:flex-start;background:#fef3c7;color:#92400e;}",
@@ -126,22 +129,44 @@
     }
     var intern = href.charAt(0) === "/" || href.indexOf("./") === 0
       || (typeof location !== "undefined" && location.origin && href.indexOf(location.origin) === 0);
+    var cls = intern ? "daw-xat-enllac daw-xat-apartat" : "daw-xat-enllac";
     var extra = intern
       ? ' target="_self"'
       : ' target="_blank" rel="noopener noreferrer"';
-    return '<a class="daw-xat-enllac" href="' + escaparHtml(href) + '"' + extra + ">" + etiqueta + "</a>";
+    return '<a class="' + cls + '" href="' + escaparHtml(href) + '"' + extra + ">" + etiqueta + "</a>";
+  }
+
+  var APARTATS = {
+    "règim intern": "/règim-intern/",
+    "visor de l'aula": "/disposició-aula/",
+    "plànol de l'aula": "/disposició-aula/",
+    "disposició de l'aula": "/disposició-aula/",
+    "gestor d'incidències": "/gestor-incidències/",
+    "tràmits de vagues": "/tràmits-vagues/",
+    "consultor de tutories": "/consultor-de-tutories/",
+    "dreceres importants": "/dreceres-importants/",
+    "horari": "/horari/"
+  };
+
+  function hrefApartat(nom) {
+    var k = String(nom || "").replace(/&amp;/g, "&").replace(/^\s+|\s+$/g, "").toLowerCase();
+    return APARTATS[k] || "";
   }
 
   function formatMd(s) {
     var t = escaparHtml(s);
-    t = t.replace(/\*\*([\s\S]+?)\*\*/g, "<strong>$1</strong>");
-    t = t.replace(/\*([^*\n]+?)\*/g, "<em>$1</em>");
     t = aplicarSobreText(t, function (text) {
       return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (tot, etq, url) {
         var h = hrefSegur(url);
-        return h ? htmlEnllac(h, etq) : tot;
+        var nom = String(etq || "").replace(/^\*\*|\*\*$/g, "");
+        return h ? htmlEnllac(h, nom) : tot;
       });
     });
+    t = t.replace(/\*\*([\s\S]+?)\*\*/g, function (tot, inner) {
+      var h = hrefApartat(inner);
+      return h ? htmlEnllac(h, inner) : "<strong>" + inner + "</strong>";
+    });
+    t = t.replace(/\*([^*\n]+?)\*/g, "<em>$1</em>");
     t = aplicarSobreText(t, function (text) {
       return text.replace(/`([^`]+)`/g, function (tot, inner) {
         var h = hrefSegur(inner);
