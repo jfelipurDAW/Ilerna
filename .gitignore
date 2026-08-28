@@ -1,0 +1,7 @@
+# Apps Script / clasp: no es publica a GitHub Pages
+/xatbot/
+**/.clasp.json
+**/.clasprc.json
+**/.claspignore
+**/appsscript.json
+**/*.gs

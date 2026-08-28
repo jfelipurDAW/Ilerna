@@ -1,0 +1,141 @@
+{
+  "aula": "3.3",
+  "equips": [
+    {
+      "codi": "A-33-PC-001",
+      "persona": null
+    },
+    {
+      "codi": "A-33-PC-002",
+      "persona": "Cesc Bellet"
+    },
+    {
+      "codi": "A-33-PC-003",
+      "persona": "Ivan Korobov"
+    },
+    {
+      "codi": "A-33-PC-004",
+      "persona": "Pere Boloix"
+    },
+    {
+      "codi": "A-33-PC-005",
+      "persona": "Jan Boloix"
+    },
+    {
+      "codi": "A-33-PC-006",
+      "persona": "Soulou Seydi"
+    },
+    {
+      "codi": "A-33-PC-007",
+      "persona": "Pau Nadal"
+    },
+    {
+      "codi": "A-33-PC-008",
+      "persona": "Hugo Lara"
+    },
+    {
+      "codi": "A-33-PC-009",
+      "persona": "Martí Badia"
+    },
+    {
+      "codi": "A-33-PC-010",
+      "persona": "Daniel Guedes"
+    },
+    {
+      "codi": "A-33-PC-011",
+      "persona": "Biel Sànchez"
+    },
+    {
+      "codi": "A-33-PC-012",
+      "persona": "Andrei Istoc"
+    },
+    {
+      "codi": "A-33-PC-013",
+      "persona": null
+    },
+    {
+      "codi": "A-33-PC-014",
+      "persona": "Denis Tineo"
+    },
+    {
+      "codi": "A-33-PC-015",
+      "persona": "Marcelo Renteria"
+    },
+    {
+      "codi": "A-33-PC-016",
+      "persona": "Carlos Oros"
+    },
+    {
+      "codi": "A-33-PC-017",
+      "persona": "Darius Catalin"
+    },
+    {
+      "codi": "A-33-PC-018",
+      "persona": "Eloy Gonzalo"
+    },
+    {
+      "codi": "A-33-PC-019",
+      "persona": "Alejandro Monreal"
+    },
+    {
+      "codi": "A-33-PC-020",
+      "persona": null
+    },
+    {
+      "codi": "A-33-PC-021",
+      "persona": "Guillem Fernandez"
+    },
+    {
+      "codi": "A-33-PC-022",
+      "persona": "Unai Torres"
+    },
+    {
+      "codi": "A-33-PC-023",
+      "persona": "Badre Essadaoui"
+    },
+    {
+      "codi": "A-33-PC-024",
+      "persona": "Gerard Lechosa"
+    },
+    {
+      "codi": "A-33-PC-025",
+      "persona": "Iván Calavera"
+    },
+    {
+      "codi": "A-33-PC-026",
+      "persona": "Oriol Aran"
+    },
+    {
+      "codi": "A-33-PC-027",
+      "persona": null
+    },
+    {
+      "codi": "A-33-PC-028",
+      "persona": null
+    },
+    {
+      "codi": "A-33-PC-029",
+      "persona": "Aritz Perez"
+    },
+    {
+      "codi": "A-33-PC-030",
+      "persona": "Marius Cristian"
+    },
+    {
+      "codi": "A-33-PC-031",
+      "persona": "Didac Santolaria"
+    },
+    {
+      "codi": "A-33-PC-032",
+      "persona": "Marta Voytkovych"
+    },
+    {
+      "codi": "A-33-PC-033",
+      "persona": "Jan Felip"
+    },
+    {
+      "codi": "A-33-PC-034",
+      "persona": "Alex Camacho"
+    }
+  ]
+}

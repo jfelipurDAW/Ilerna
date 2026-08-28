@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="icon" type="image/png" href="../icon128.png">
-        <title>⚠️ En desenvolupament</title>
+        <title>Règim intern - Portal DAW2</title>
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
         <script>
             tailwind.config = {
@@ -103,7 +103,7 @@
     <body class="bg-ilerna-fons font-fira text-ilerna-negre overflow-x-hidden">
 
        <header class="bg-ilerna-fons shadow-md border-b-4 border-ilerna-blau px-6 py-4 flex justify-between items-center sticky top-0 z-50">
-            <a href="../" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <a href="../" class="flex items-center gap-3">
             <div class="bg-ilerna-negre text-ilerna-fons p-2 rounded-lg">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
@@ -112,12 +112,12 @@
                 </svg>
             </div>
             <div>
-                <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+                <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW2</span></h1>
             </div>
             </a>
-            <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
+            <a href="../" class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider hover:text-ilerna-blau transition-colors">
             Portal de l'Alumne
-            </div>
+            </a>
         </header>
         <a href="../" class="absolute top-24 right-6 z-30 inline-flex items-center gap-2 bg-gray-200 text-ilerna-negre px-5 py-2.5 rounded-lg font-bold shadow-lg border-b-4 border-ilerna-blau hover:-translate-y-1 transition-all">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -603,22 +603,34 @@
                             <li>
                                 <span class="font-semibold underlinde uppercase">Faltes lleus</span>
                                 <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
-                                    <li>Insereix text aquí</li>
-                                    <li>Insereix text aquí</li>
+                                    <li>Utilització sense autorització del professor/a per qualsevol ús que no sigui necessari per a dur a terme les activitats pròpies de la classe que s'està impartint en aquell moment, per exemple:
+                                        <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
+                                            <li>Despatxar el correu electrònic personal</li>
+                                            <li>Accedir a xarxes socials</li>
+                                            <li>Xatejar</li>
+                                            <li>Navegar per pàgines web</li>
+                                            <li>Escoltar música amb auriculars</li>
+                                            <li>Jugar</li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
                                 <span class="font-semibold underline uppercase">Faltes Greus</span>
                                 <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
-                                    <li>Insereix text aquí</li>
-                                    <li>Insereix text aquí</li>
+                                    <li>Qualsevol acció sense autorització del professor/a, que alenteixi o dificulti el desenvolupament normal de la classe, com per exemple:</li>
+                                    <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
+                                        <li>Emprar el dispositiu com a comandament a distància per apagar el projector o altres dispositius que s'estiguin utilitzant durant la classe</li>
                                 </ul>
                             </li>
                             <li>
                                 <span class="font-semibold underline uppercase">Faltes molt greus</span>
                                 <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
-                                    <li>Insereix text aquí</li>
-                                    <li>Insereix text aquí</li>
+                                    <li>Qualsevol ús que atempti contra els drets a la intimitat, dignitat o honor de les institucions o persones, siguin aquestes membres de la comunitat educativa o no, com per exemple:</li>
+                                    <ul class="list-disc pl-5 text-ilerna-negre space-y-1">
+                                        <li>Prendre/gravar i/o difondre imatges/àudios/texts de qualsevol membre de la comunitat educativa sense autorització expressa</li>
+                                        <li>Emprar-lo amb finalitat de fer ciberassetjament a qualsevol altre membre de la comunitat educativa</li>
+                                    </ul>
                                 </ul>
                             </li>
                         </ul>
@@ -700,5 +712,6 @@
                 });
             });
         </script>
+    <script src="../xatbot-widget.js"></script>
     </body>
 </html>

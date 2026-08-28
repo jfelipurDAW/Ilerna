@@ -1,0 +1,11 @@
+{
+  "tutor": "Sandra Serrano",
+  "correu": "sserrano@ilerna.com",
+  "franges": [
+    { "dia": "Dilluns", "inici": "16:15", "fi": "19:30", "lloc": "Sala de professors", "nota": "" },
+    { "dia": "Dimarts", "inici": "17:10", "fi": "18:35", "lloc": "Sala de professors", "nota": "" },
+    { "dia": "Dimecres", "inici": "16:15", "fi": "17:10", "lloc": "Sala de professors", "nota": "Hora de tutoria" },
+    { "dia": "Dimecres", "inici": "17:10", "fi": "19:30", "lloc": "Aula 3.2", "nota": "Parcialment disponible" },
+    { "dia": "Divendres", "inici": "18:05", "fi": "18:30", "lloc": "Sala de professors", "nota": "Hora del pati" }
+  ]
+}

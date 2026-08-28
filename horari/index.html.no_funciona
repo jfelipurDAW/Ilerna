@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="../icon128.png">
-  <title>Portal DAW1</title>
+  <title>Portal DAW2</title>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -35,7 +35,7 @@
         </svg>
       </div>
       <div>
-        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW1</span></h1>
+        <h1 class="text-xl font-extrabold text-ilerna-negre tracking-wide m-0">ILERNA <span class="text-ilerna-blau">DAW2</span></h1>
       </div>
     </div>
     <div class="hidden sm:block text-sm font-semibold text-gray-500 uppercase tracking-wider">
